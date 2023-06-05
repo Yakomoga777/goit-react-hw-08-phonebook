@@ -1,6 +1,6 @@
 import { RegistrationForm } from 'components/RegistrationForm/RegistrationForm';
 
-export default function RegisterPage() {
+export default function SignupPage() {
   return (
     <div>
       <title>Registration</title>

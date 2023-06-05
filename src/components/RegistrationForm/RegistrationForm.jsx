@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { register } from '../../Redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 export const RegistrationForm = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,6 +16,7 @@ export const RegistrationForm = () => {
       email,
       password,
     };
+    dispatch(register(userData));
 
     console.log(userData);
   };

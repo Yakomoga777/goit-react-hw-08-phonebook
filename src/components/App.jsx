@@ -10,8 +10,9 @@ import { selectIsLoading } from '../Redux/slises/selectors';
 import { StyledContainer, H1, H2 } from './Container/Container';
 import { Route, Routes } from 'react-router';
 import { Navigation } from './Navigation/Navigation';
-import RegisterPage from 'pages/RegisterPage';
+
 import LoginPage from 'pages/LoginPage';
+import SignupPage from 'pages/SignupPage';
 
 const theme = {};
 
@@ -44,7 +45,7 @@ export const App = () => {
               </StyledContainer>
             }
           ></Route>
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path={'*'} element={'Page NOT FOUND'}></Route>
         </Route>
