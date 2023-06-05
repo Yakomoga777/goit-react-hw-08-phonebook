@@ -5,9 +5,21 @@ export const RegistrationForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const onSubmit = e => {
+    e.preventDefault();
+
+    const userData = {
+      name,
+      email,
+      password,
+    };
+
+    console.log(userData);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmit} autoComplete="on">
         <div>
           <label htmlFor="name">
             Ім'я:
