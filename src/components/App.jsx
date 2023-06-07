@@ -9,10 +9,12 @@ import { fetchContacts } from '../Redux/slises/operations.js';
 import { selectIsLoading } from '../Redux/slises/selectors';
 import { StyledContainer, H1, H2 } from './Container/Container';
 import { Route, Routes } from 'react-router';
-import { Navigation } from './Navigation/Navigation';
+// import { Navigation } from './Navigation/Navigation';
 
 import LoginPage from 'pages/LoginPage';
 import SignupPage from 'pages/SignupPage';
+import { AppBar } from './AppBar/AppBar';
+import { selectedIsToken } from 'Redux/auth/selectors';
 
 const theme = {};
 
@@ -20,6 +22,7 @@ export const App = () => {
   const dispatch = useDispatch();
   // Отримуємо частини стану
   const isLoading = useSelector(selectIsLoading);
+  const isToken = useSelector(selectedIsToken);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -31,17 +34,17 @@ export const App = () => {
       <GlobalStyle />
 
       <Routes>
-        <Route path={'/'} element={<Navigation />}>
+        <Route path={'/'} element={<AppBar />}>
           <Route
             index
             element={
               <StyledContainer>
                 <H1>Phonebook</H1>
                 <ContactForm btn="Add contact" />
-                {/* <H2>Contacts</H2>
+                <H2>Contacts</H2>
                 <Filter />
                 {isLoading && <p>Loading...</p>}
-                <ContactList /> */}
+                {isToken && <ContactList />}
               </StyledContainer>
             }
           ></Route>

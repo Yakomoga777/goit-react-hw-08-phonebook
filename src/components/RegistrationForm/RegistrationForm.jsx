@@ -17,7 +17,9 @@ export const RegistrationForm = () => {
       password,
     };
     dispatch(register(userData));
-
+    setName('');
+    setEmail('');
+    setPassword('');
     console.log(userData);
   };
 

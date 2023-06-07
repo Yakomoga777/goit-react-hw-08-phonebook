@@ -9,8 +9,10 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { authSlice } from './auth/authSlice';
 
 const reducer = combineReducers({
+  auth: authSlice.reducer,
   contacts: contactSlise.reducer,
   filter: filterSlise.reducer,
 });

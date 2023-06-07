@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'Redux/auth/operations';
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
@@ -11,7 +14,9 @@ export const LoginForm = () => {
       email,
       password,
     };
-
+    dispatch(logIn(userData));
+    setEmail('');
+    setPassword('');
     console.log(userData);
   };
 
