@@ -48,10 +48,19 @@ export const contactSlise = createSlice({
         state.contacts.splice(index, 1);
       });
   },
+  reducers: {
+    clearContactList(state, action) {
+      state.contacts = action.payload;
+    },
+  },
 });
 
-export const { fetchingInProgress, fetchingSuccess, fetchingError } =
-  contactSlise.actions;
+export const {
+  fetchingInProgress,
+  fetchingSuccess,
+  fetchingError,
+  clearContactList,
+} = contactSlise.actions;
 
 // extraReducers: {
 //   [fetchContacts.pending]: handlePending,
