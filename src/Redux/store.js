@@ -10,15 +10,30 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { authSlice } from './auth/authSlice';
+import storage from 'redux-persist/lib/storage';
+import persistReducer from 'redux-persist/es/persistReducer';
+import persistStore from 'redux-persist/es/persistStore';
 
-const reducer = combineReducers({
-  auth: authSlice.reducer,
-  contacts: contactSlise.reducer,
-  filter: filterSlise.reducer,
-});
+const persistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
+// const reducer = combineReducers({
+//   auth: authSlice.reducer,
+//   contacts: contactSlise.reducer,
+//   filter: filterSlise.reducer,
+// });
+
+const persistedReducer = persistReducer(persistConfig, authSlice.reducer);
 
 export const store = configureStore({
-  reducer: reducer,
+  reducer: {
+    auth: persistedReducer,
+    contacts: contactSlise.reducer,
+    filter: filterSlise.reducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -27,13 +42,4 @@ export const store = configureStore({
     }),
 });
 
-// const persistConfig = {
-//   key: 'contacts',
-//   storage,
-//   // blacklist: ['filter'],
-//   whitelist: ['contacts'],
-// };
-
-// const persistedReducer = persistReducer(persistConfig, reducer);
-
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

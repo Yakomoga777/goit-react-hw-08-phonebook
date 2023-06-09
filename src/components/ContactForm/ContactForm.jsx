@@ -4,6 +4,7 @@ import { StyledContactInput, StyledForm } from './ContactForm.styled';
 
 import { addContact } from 'Redux/slises/operations';
 import { selectcontacts } from 'Redux/slises/selectors';
+import { selectIsLoggedIn } from 'Redux/auth/selectors';
 
 export const ContactForm = ({ btn }) => {
   const [name, setName] = useState('');
@@ -11,6 +12,7 @@ export const ContactForm = ({ btn }) => {
   const dispatch = useDispatch();
 
   const contacts = useSelector(selectcontacts);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   // Контрольовані імпути
   const handleChange = evt => {
@@ -28,16 +30,20 @@ export const ContactForm = ({ btn }) => {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
     const newContact = { name, number };
+    // console.log();
 
     // перевірка на наявний конткт
     const includesName = contacts.find(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
+    if (!isLoggedIn) {
+      return alert(`Please log in to the application`);
+    }
     if (!includesName) {
+      dispatch(addContact(newContact));
     } else {
       return alert(`${newContact.name} is already in contacts`);
     }
-    dispatch(addContact(newContact));
 
     reset();
   };
