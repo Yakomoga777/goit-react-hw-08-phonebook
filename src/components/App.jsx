@@ -17,6 +17,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from 'Redux/store';
 import { refreshUser } from 'Redux/auth/operations';
 import { lazy } from 'react';
+import PrivateRoute from './Routes/PrivateRoute';
 // import HomePage from 'pages/HomePage';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
@@ -49,10 +50,16 @@ export const App = () => {
               <Route path="/" element={<AppBar />}>
                 <Route index element={<HomePage />} />
                 <Route path="contacts" element={<ContactList />} />
+
                 <Route path="register" element={<SignupPage />} />
                 <Route path="login" element={<LoginPage />} />
                 <Route path="*" element={'Page NOT FOUND'} />
               </Route>
+              {/* <>
+                <PrivateRoute path="contacts">
+                  <ContactList />
+                </PrivateRoute>
+              </> */}
             </Routes>
           </Suspense>
         </PersistGate>
