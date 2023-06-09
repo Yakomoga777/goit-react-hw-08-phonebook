@@ -1,10 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'Redux/auth/operations';
+import { selectUser } from 'Redux/auth/selectors';
 import { clearContactList } from 'Redux/slises/contactSlise';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
+  const { name } = useSelector(selectUser);
 
   const onLogOut = () => {
     dispatch(clearContactList([]));
@@ -12,7 +14,7 @@ export const UserMenu = () => {
   };
   return (
     <>
-      <p>Привіт, {}</p>
+      <p>Привіт, {name}</p>
       <button type="button" onClick={onLogOut}>
         Log Out
       </button>
