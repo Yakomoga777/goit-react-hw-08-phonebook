@@ -10,13 +10,12 @@ import { NavigationWrap } from './AppBar.styled';
 
 const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <>
       <header>
         <NavigationWrap>
           <Navigation />
-          <Link to="/contacts">Contacts</Link>
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </NavigationWrap>
       </header>
       <main>
@@ -24,6 +23,11 @@ const AppBar = () => {
           <Outlet />
         </Suspense>
       </main>
+      {isLoggedIn && (
+        <footer>
+          <p>Created by Roman Petrenko</p>
+        </footer>
+      )}
     </>
   );
 };

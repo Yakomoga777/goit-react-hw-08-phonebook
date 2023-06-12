@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
+import { createGlobalStyle } from 'styled-components';
 //Створюю змінну глобальних стилів
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -37,5 +37,9 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+:where(html) {
+    line-height: 1.4;
 }
 `;

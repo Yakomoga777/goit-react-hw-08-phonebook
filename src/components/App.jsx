@@ -12,12 +12,13 @@ import { Outlet, Route, Routes } from 'react-router';
 // import LoginPage from 'pages/LoginPage';
 // import SignupPage from 'pages/SignupPage';
 // import AppBar from './AppBar/AppBar';
-import { selectedIsToken } from 'Redux/auth/selectors';
+import { selectedIsToken, selectIsRefreshing } from 'Redux/auth/selectors';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from 'Redux/store';
 import { refreshUser } from 'Redux/auth/operations';
 import { lazy } from 'react';
 import PrivateRoute from './Routes/PrivateRoute';
+import PablicRoute from './Routes/PublicRoute';
 // import HomePage from 'pages/HomePage';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
@@ -31,8 +32,6 @@ const theme = {};
 export const App = () => {
   const dispatch = useDispatch();
   // Отримуємо частини стану
-  const isLoading = useSelector(selectIsLoading);
-  const isToken = useSelector(selectedIsToken);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -49,17 +48,30 @@ export const App = () => {
             <Routes>
               <Route path="/" element={<AppBar />}>
                 <Route index element={<HomePage />} />
-                <Route path="contacts" element={<ContactList />} />
+                <Route
+                  path="contacts"
+                  element={
+                    <PrivateRoute
+                      redirectTo="/login"
+                      component={<ContactList />}
+                    />
+                  }
+                />
+                <Route
+                  path="login"
+                  element={
+                    <PablicRoute path="contacts" component={<LoginPage />} />
+                  }
+                />
+                <Route
+                  path="register"
+                  element={
+                    <PablicRoute path="contacts" component={<SignupPage />} />
+                  }
+                />
 
-                <Route path="register" element={<SignupPage />} />
-                <Route path="login" element={<LoginPage />} />
                 <Route path="*" element={'Page NOT FOUND'} />
               </Route>
-              {/* <>
-                <PrivateRoute path="contacts">
-                  <ContactList />
-                </PrivateRoute>
-              </> */}
             </Routes>
           </Suspense>
         </PersistGate>

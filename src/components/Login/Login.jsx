@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'Redux/auth/operations';
 
@@ -14,10 +14,14 @@ export const LoginForm = () => {
       email,
       password,
     };
+
     dispatch(logIn(userData));
+    reset();
+  };
+
+  const reset = () => {
     setEmail('');
     setPassword('');
-    console.log(userData);
   };
 
   return (
