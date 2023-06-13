@@ -1,7 +1,3 @@
-import {
-  StyledContactInput,
-  StyledForm,
-} from 'components/ContactForm/ContactForm.styled';
 import { StyledContainer } from 'components/Container/Container';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
