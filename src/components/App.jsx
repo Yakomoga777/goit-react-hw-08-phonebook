@@ -1,25 +1,15 @@
 import React, { Suspense, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-// import ContactList from './ContactList/ContactList';
 import { GlobalStyle } from './GlobalStyle/GlobalStyle';
-import { ContactForm } from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import { fetchContacts } from '../Redux/slises/operations.js';
-import { selectIsLoading } from '../Redux/slises/selectors';
-import { StyledContainer, H1, H2 } from './Container/Container';
-import { Outlet, Route, Routes } from 'react-router';
-// import LoginPage from 'pages/LoginPage';
-// import SignupPage from 'pages/SignupPage';
-// import AppBar from './AppBar/AppBar';
-import { selectedIsToken, selectIsRefreshing } from 'Redux/auth/selectors';
+import { Route, Routes } from 'react-router';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from 'Redux/store';
 import { refreshUser } from 'Redux/auth/operations';
 import { lazy } from 'react';
 import PrivateRoute from './Routes/PrivateRoute';
 import PablicRoute from './Routes/PublicRoute';
-// import HomePage from 'pages/HomePage';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const SignupPage = lazy(() => import('../pages/SignupPage'));
@@ -37,7 +27,6 @@ export const App = () => {
     dispatch(fetchContacts());
     dispatch(refreshUser());
   }, [dispatch]);
-  // Рендерим розмітку в залежності від значень у стані
 
   return (
     <ThemeProvider theme={theme}>
