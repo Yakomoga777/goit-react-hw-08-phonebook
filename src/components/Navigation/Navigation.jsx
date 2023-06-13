@@ -1,8 +1,7 @@
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserMenu } from 'components/UserMenu/UserMenu';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, Outlet } from 'react-router-dom';
 import { selectIsLoggedIn } from 'Redux/auth/selectors';
 import { StyledLink, StyledNavigation } from './Navigation.styled';
 
