@@ -28,5 +28,5 @@ export const StyledWelcome = styled.p`
   margin-top: auto;
   margin-bottom: auto;
   /* background-color: #dfb69e; */
-  border-bottom: 2px #dfb69e solid;
+  /* border-bottom: 2px #dfb69e solid; */
 `;
