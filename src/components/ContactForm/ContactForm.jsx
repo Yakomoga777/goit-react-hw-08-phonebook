@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledContactInput, StyledForm } from './ContactForm.styled';
+import {
+  StyledContactButton,
+  StyledContactInput,
+  StyledForm,
+} from './ContactForm.styled';
 import { addContact } from 'Redux/slises/operations';
 import { selectcontacts } from 'Redux/slises/selectors';
 import { selectIsLoggedIn } from 'Redux/auth/selectors';
@@ -74,7 +78,7 @@ export const ContactForm = ({ btn }) => {
           onChange={handleChange}
         />
 
-        <button type="submit">{btn}</button>
+        <StyledContactButton type="submit">{btn}</StyledContactButton>
       </StyledForm>
     </div>
   );

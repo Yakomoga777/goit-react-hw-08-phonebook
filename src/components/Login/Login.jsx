@@ -1,6 +1,16 @@
+import {
+  StyledContactInput,
+  StyledForm,
+} from 'components/ContactForm/ContactForm.styled';
+import { StyledContainer } from 'components/Container/Container';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'Redux/auth/operations';
+import {
+  StyledLoginButton,
+  StyledLoginForm,
+  StyledLoginInput,
+} from './Login.styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -25,30 +35,27 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} autoComplete="on">
-      <div>
+    <StyledContainer>
+      <StyledLoginForm onSubmit={onSubmit} autoComplete="on">
         {' '}
         <label>
           Email
-          <input
+          <StyledLoginInput
             type="email"
             name="email"
             onChange={e => setEmail(e.target.value)}
           />
         </label>
-      </div>
-      <div>
         <label>
           Password
-          <input
+          <StyledLoginInput
             type="password"
             name="password"
             onChange={e => setPassword(e.target.value)}
           />
         </label>
-      </div>
-
-      <button type="submit">Log In</button>
-    </form>
+        <StyledLoginButton type="submit">Log In</StyledLoginButton>
+      </StyledLoginForm>
+    </StyledContainer>
   );
 };

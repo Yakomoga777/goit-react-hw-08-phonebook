@@ -1,3 +1,4 @@
+import { StyledButton } from 'components/ContactList/ContactItem.styled';
 import styled from 'styled-components';
 
 export const StyledForm = styled.form`
@@ -12,4 +13,12 @@ export const StyledForm = styled.form`
 export const StyledContactInput = styled.input`
   border: 1px solid black;
   border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+export const StyledContactButton = styled(StyledButton)`
+  height: 40px;
+  padding: 10px;
+
+  line-height: 1;
 `;

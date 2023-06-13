@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { register } from '../../Redux/auth/operations';
 import { useDispatch } from 'react-redux';
+import {
+  StyledRegButton,
+  StyledRegForm,
+  StyledRegInput,
+} from './RegistrationForm.styled';
+import { StyledContainer } from 'components/Container/Container';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -24,12 +30,12 @@ export const RegistrationForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit} autoComplete="on">
+    <StyledContainer>
+      <StyledRegForm onSubmit={onSubmit} autoComplete="on">
         <div>
           <label htmlFor="name">
             Ім'я:
-            <input
+            <StyledRegInput
               type="text"
               id="name"
               value={name}
@@ -40,7 +46,7 @@ export const RegistrationForm = () => {
         <div>
           <label htmlFor="email">
             Пошта:
-            <input
+            <StyledRegInput
               type="email"
               id="email"
               value={email}
@@ -51,7 +57,7 @@ export const RegistrationForm = () => {
         <div>
           <label htmlFor="password">
             Пароль:
-            <input
+            <StyledRegInput
               type="password"
               id="password"
               value={password}
@@ -59,8 +65,8 @@ export const RegistrationForm = () => {
             />
           </label>
         </div>
-        <button type="submit">Зареєструватися</button>
-      </form>
-    </div>
+        <StyledRegButton type="submit">Зареєструватися</StyledRegButton>
+      </StyledRegForm>
+    </StyledContainer>
   );
 };
