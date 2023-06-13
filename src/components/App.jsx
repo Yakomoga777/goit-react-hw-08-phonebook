@@ -21,11 +21,12 @@ const theme = {};
 
 export const App = () => {
   const dispatch = useDispatch();
+
   // Отримуємо частини стану
 
   useEffect(() => {
-    dispatch(fetchContacts());
     dispatch(refreshUser());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
