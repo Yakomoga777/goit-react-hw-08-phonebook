@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { contactSlise } from './slises/contactSlise';
 import { filterSlise } from './slises/filterSlise';
 import {
