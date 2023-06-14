@@ -55,7 +55,7 @@ export const logIn = createAsyncThunk(
           'Вибачте, пошта або пароль не вірні. Спробуйте ще раз.'
         );
       }
-      console.log(error.name);
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

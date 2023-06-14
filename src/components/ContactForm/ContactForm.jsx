@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -45,7 +46,7 @@ export const ContactForm = ({ btn }) => {
     if (!includesName) {
       dispatch(addContact(newContact));
     } else {
-      return alert(`${newContact.name} is already in contacts`);
+      return Notiflix.Notify.warning(`Контакт ${name} вже існує`);
     }
 
     reset();
