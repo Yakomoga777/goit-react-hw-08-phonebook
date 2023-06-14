@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -26,6 +27,11 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.name === 'AxiosError') {
+        return Notiflix.Notify.failure(
+          'Користувач з такою поштою вже зареєстрований'
+        );
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
