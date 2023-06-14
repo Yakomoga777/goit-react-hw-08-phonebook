@@ -50,6 +50,12 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.name === 'AxiosError') {
+        return Notiflix.Notify.failure(
+          'Вибачте, пошта або пароль не вірні. Спробуйте ще раз.'
+        );
+      }
+      console.log(error.name);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
